@@ -9,4 +9,8 @@
     "**/node_modules": true,
   },
   "jest.autoEnable": false,
+  "cSpell.words": [
+    "polyfill",
+    "vuetify"
+  ],
 }
