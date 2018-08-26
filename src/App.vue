@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import AppToolbar from '@/components/toolbar/Toolbar.vue';
+import AppToolbar from '@/components/Toolbar.vue';
 
 @Component({
   components: {

@@ -1,6 +1,7 @@
-import Vue from 'vue';
-import Router from 'vue-router';
 import AppHome from './views/Home.vue';
+import AppLogin from './views/Login.vue';
+import Router from 'vue-router';
+import Vue from 'vue';
 
 Vue.use(Router);
 
@@ -12,6 +13,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: AppHome,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: AppLogin,
     },
   ],
 });

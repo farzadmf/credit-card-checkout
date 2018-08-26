@@ -7,7 +7,7 @@ export interface IState {
 }
 
 const initialState: IState = {
-  loggedIn: true,
+  loggedIn: false,
 };
 
 Vue.use(Vuex);

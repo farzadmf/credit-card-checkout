@@ -10,6 +10,7 @@
   },
   "jest.autoEnable": false,
   "cSpell.words": [
+    "Vuelidate",
     "Vuex",
     "polyfill",
     "vuetify"
