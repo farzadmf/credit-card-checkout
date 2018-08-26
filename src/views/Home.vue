@@ -1,8 +1,11 @@
 <template lang="pug">
   v-container(text-xs-center)
-    h1 Welcome to Credit Card Checkout App
-    p(v-if="!isLoggedIn") Clock 'LOGIN' to Continue ...
-    p(v-else) Go to 'Products' to Purchase ...
+    v-flex(xs12 v-if="!isLoggedIn")
+      h1 Credit Card Checkout App
+      h3 Click 'LOGIN' to Continue ...
+    v-flex(xs12 v-else)
+      h1 Welcome!
+      h3 Go to 'Products' to Purchase ...
 </template>
 
 <script lang="ts">
