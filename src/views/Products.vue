@@ -1,11 +1,18 @@
 <template lang="pug">
   v-container
-    div Product List
+    v-layout(row pa-2)
+      h1 Product List
+    app-product-list
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import AppProductList from '@/components/ProductList.vue';
 
-@Component
+@Component({
+  components: {
+    AppProductList,
+  },
+})
 export default class AppProducts extends Vue {}
 </script>

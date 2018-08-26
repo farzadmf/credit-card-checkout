@@ -4,7 +4,7 @@ import { mutations, MutationTypes } from './mutations';
 
 export interface IProduct {
   description: string;
-  imageUrl: string;
+  fileName: string;
   title: string;
 }
 
@@ -28,9 +28,9 @@ const descriptions = [
 
 const initialState: IState = {
   loggedIn: false,
-  products: new Array(10).map((_, i) => ({
-    description: descriptions[i],
-    imageUrl: `./assets/p${i + 1}.jpg`,
+  products: descriptions.map((desc, i) => ({
+    description: desc,
+    fileName: `p${i + 1}`,
     title: `Product ${i + 1}`,
   })),
 };

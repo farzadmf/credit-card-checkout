@@ -1,5 +1,6 @@
 import AppHome from './views/Home.vue';
 import AppLogin from './views/Login.vue';
+import AppProducts from './views/Products.vue';
 import Router from 'vue-router';
 import Vue from 'vue';
 
@@ -18,6 +19,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: AppLogin,
+    },
+    {
+      path: '/products',
+      name: 'products',
+      component: AppProducts,
     },
   ],
 });
