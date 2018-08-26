@@ -1,7 +1,8 @@
 <template lang="pug">
   v-app
     app-toolbar
-    router-view
+    transition(enter-active-class="animated slideInUp faster")
+      router-view
 </template>
 
 <script lang="ts">
@@ -18,4 +19,6 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss">
+@import '~animate.css/animate.css';
+
 </style>

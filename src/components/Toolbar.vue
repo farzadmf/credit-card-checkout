@@ -1,6 +1,7 @@
 <template lang="pug">
   v-toolbar(dark color="primary")
-    v-toolbar-title Credit Card Checkout
+    router-link(to="/")
+      v-btn.title(flat) Credit Card Checkout App
     v-spacer
     v-btn(@click.prevent="handleLogin" flat) {{ isLoggedIn ? 'Log Out' : 'Log in' }}
     router-link(to="/products")
