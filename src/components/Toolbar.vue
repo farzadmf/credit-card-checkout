@@ -12,28 +12,31 @@
       v-btn(flat) Products
 </template>
 
-<script>
+<script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { mapGetters, mapActions } from 'vuex';
 import { Mutations, Getters } from '@/store';
 
 @Component({
-  computed: {
-    ...mapGetters([Getters.isLoggedIn, Getters.selectedProducts]),
-    cartColor() {
-      return this.selectedProducts.length > 0 ? 'orange' : '';
-    },
-  },
+  computed: mapGetters([Getters.isLoggedIn, Getters.selectedProducts]),
   methods: mapActions([Mutations.LOG_IN, Mutations.LOG_OUT]),
 })
 export default class AppToolbar extends Vue {
-  handleLogin() {
+  [key: string]: any;
+  private isLoggedIn!: boolean;
+  private selectedProducts!: number[];
+
+  private handleLogin() {
     if (this.isLoggedIn) {
       this[Mutations.LOG_OUT]();
       this.$router.push('/');
     } else {
       this.$router.push('/login');
     }
+  }
+
+  private get cartColor() {
+    return this.selectedProducts.length > 0 ? 'orange' : '';
   }
 }
 </script>

@@ -33,6 +33,7 @@ import { Mutations } from '@/store';
   methods: mapActions([Mutations.LOG_IN]),
 })
 export default class AppLoginForm extends Vue {
+  [key: string]: any;
   public $refs!: HTMLFormElement;
   private valid = false;
   private email = '';

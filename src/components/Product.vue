@@ -25,6 +25,7 @@ import { Mutations, Getters } from '@/store';
   methods: mapActions([Mutations.ADD_TO_CART, Mutations.REMOVE_FROM_CART]),
 })
 export default class AppProduct extends Vue {
+  [key: string]: any;
   private selectedProducts!: number[];
   @Prop() private product!: IProduct;
 
