@@ -1,10 +1,5 @@
 <template lang="pug">
-  v-container(mt-5)
-    v-layout(row pa-2)
-      h1 Product List
-    app-product-list(v-if="isLoggedIn")
-    v-layout(pa-2 v-else)
-      p Please login to be able to purchase products
+  app-product-list
 </template>
 
 <script lang="ts">

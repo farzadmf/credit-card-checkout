@@ -18,7 +18,7 @@ const descriptions = [
 ];
 
 const initialState: IState = {
-  loggedIn: true,
+  loggedIn: false,
   products: descriptions.map((desc, i) => ({
     id: i + 1,
     description: desc,

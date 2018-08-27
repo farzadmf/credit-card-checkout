@@ -1,6 +1,5 @@
 <template lang="pug">
-  v-container(mt-5)
-    app-login-form
+  app-login-form
 </template>
 
 <script lang="ts">

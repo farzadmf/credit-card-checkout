@@ -1,8 +1,9 @@
 <template lang="pug">
   v-app
     app-toolbar
-    transition(enter-active-class="animated slideInUp faster")
-      router-view
+    v-container(mt-5)
+      transition(enter-active-class="animated slideInUp faster")
+        router-view
 </template>
 
 <script lang="ts">
