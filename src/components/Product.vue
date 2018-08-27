@@ -1,6 +1,14 @@
 <template lang="pug">
-  v-card(raised hover height="100%" @click.native="handleClick(product.id)")
-    v-icon(:color="getCartIconColor(product.id)") shopping_cart
+  v-card(
+    @click.native="handleClick(product.id)"
+    :dark="isSelected(product.id) ? true : false"
+    height="100%"
+    hover
+    raised
+  )
+    v-layout(row)
+      v-flex(xs12 text-xs-center)
+        v-icon(:color="isSelected(product.id) ? 'green' : ''") shopping_cart
     v-card-media(:src="require(`@/assets/${product.fileName}.jpg`)" height="200px")
     v-card-title.title(primary-title) {{ product.title }}
     v-card-text {{ product.description }}
@@ -21,16 +29,15 @@ export default class AppProduct extends Vue {
   @Prop() private product!: IProduct;
 
   private handleClick(productId: number) {
-    // tslint:disable-next-line:no-console
-    console.warn('HELLO', productId);
+    if (this.selectedProducts.indexOf(productId) === -1) {
+      this[Mutations.ADD_TO_CART](productId);
+    } else {
+      this[Mutations.REMOVE_FROM_CART](productId);
+    }
   }
 
-  private getCartIconColor(productId: number) {
-    if (this.selectedProducts.indexOf(productId) === -1) {
-      return '';
-    } else {
-      return 'green';
-    }
+  private isSelected(productId: number) {
+    return this.selectedProducts.indexOf(productId) !== -1;
   }
 }
 </script>
