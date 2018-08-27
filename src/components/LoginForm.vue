@@ -27,9 +27,10 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { mapActions } from 'vuex';
+import { Mutations } from '@/store';
 
 @Component({
-  methods: mapActions(['logIn']),
+  methods: mapActions([Mutations.LOG_IN]),
 })
 export default class AppLoginForm extends Vue {
   public $refs!: HTMLFormElement;
@@ -56,7 +57,7 @@ export default class AppLoginForm extends Vue {
     if (!this.$refs.form.validate()) {
       return;
     } else {
-      this.logIn();
+      this[Mutations.LOG_IN]();
       this.$router.push('/');
     }
   }

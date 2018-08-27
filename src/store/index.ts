@@ -1,17 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { mutations, MutationTypes } from './mutations';
-
-export interface IProduct {
-  description: string;
-  fileName: string;
-  title: string;
-}
-
-export interface IState {
-  loggedIn: boolean;
-  products: IProduct[];
-}
+import { IState } from '@/store/types';
+import { mutations } from './mutations';
+import { Mutations, Getters } from './types';
 
 const descriptions = [
   'Do dolore veniam qui ea labore enim dolore cupidatat aliqua deserunt pariatur sint velit.',
@@ -27,26 +18,33 @@ const descriptions = [
 ];
 
 const initialState: IState = {
-  loggedIn: false,
+  loggedIn: true,
   products: descriptions.map((desc, i) => ({
+    id: i + 1,
     description: desc,
     fileName: `p${i + 1}`,
     title: `Product ${i + 1}`,
   })),
+  selectedProducts: [],
 };
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   actions: {
-    logIn: context => context.commit(MutationTypes.LOG_IN),
-    logOut: context => context.commit(MutationTypes.LOG_OUT),
+    [Mutations.LOG_IN]: context => context.commit(Mutations.LOG_IN),
+    [Mutations.LOG_OUT]: context => context.commit(Mutations.LOG_OUT),
+    [Mutations.ADD_TO_CART]: (context, payload) => context.commit(Mutations.ADD_TO_CART, payload),
+    [Mutations.REMOVE_FROM_CART]: (context, payload) => context.commit(Mutations.REMOVE_FROM_CART, payload),
   },
   getters: {
-    getProducts: (state: IState) => state.products,
-    isLoggedIn: (state: IState) => state.loggedIn,
+    [Getters.products]: (state: IState) => state.products,
+    [Getters.selectedProducts]: (state: IState) => state.selectedProducts,
+    [Getters.isLoggedIn]: (state: IState) => state.loggedIn,
   },
   mutations,
   state: initialState,
   strict: process.env.NODE_ENV !== 'production',
 });
+
+export * from './types';

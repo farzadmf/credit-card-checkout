@@ -11,9 +11,10 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { mapGetters } from 'vuex';
+import { Getters } from '@/store';
 
 @Component({
-  computed: mapGetters(['isLoggedIn']),
+  computed: mapGetters([Getters.isLoggedIn]),
 })
 export default class AppHome extends Vue {}
 </script>

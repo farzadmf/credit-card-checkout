@@ -11,15 +11,16 @@
 <script>
 import { Component, Vue } from 'vue-property-decorator';
 import { mapGetters, mapActions } from 'vuex';
+import { Mutations, Getters } from '@/store';
 
 @Component({
-  computed: mapGetters(['isLoggedIn']),
-  methods: mapActions(['logIn', 'logOut']),
+  computed: mapGetters([Getters.isLoggedIn]),
+  methods: mapActions([Mutations.LOG_IN, Mutations.LOG_OUT]),
 })
 export default class AppToolbar extends Vue {
   handleLogin() {
     if (this.isLoggedIn) {
-      this.logOut();
+      this[Mutations.LOG_OUT]();
       this.$router.push('/');
     } else {
       this.$router.push('/login');

@@ -1,15 +1,20 @@
-import { IState } from './index';
-
-export const MutationTypes = {
-  LOG_IN: 'LOG_IN',
-  LOG_OUT: 'LOG_OUT',
-};
+import { IState, Mutations } from './types';
 
 export const mutations = {
-  [MutationTypes.LOG_IN](state: IState) {
+  [Mutations.LOG_IN](state: IState) {
     state.loggedIn = true;
   },
-  [MutationTypes.LOG_OUT](state: IState) {
+  [Mutations.LOG_OUT](state: IState) {
     state.loggedIn = false;
+  },
+  [Mutations.ADD_TO_CART](state: IState, payload: number) {
+    if (state.selectedProducts.indexOf(payload) === -1) {
+      state.selectedProducts.push(payload);
+    }
+  },
+  [Mutations.REMOVE_FROM_CART](state: IState, payload: number) {
+    if (state.selectedProducts.indexOf(payload) !== -1) {
+      state.selectedProducts = state.selectedProducts.filter(i => i !== payload);
+    }
   },
 };

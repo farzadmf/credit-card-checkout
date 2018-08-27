@@ -1,6 +1,6 @@
 <template lang="pug">
   v-layout(row wrap)
-    v-flex(v-for="(p, i) in getProducts()" :key="i" xs6 pa-2)
+    v-flex(v-for="(p, i) in products" :key="i" xs6 pa-2)
       app-product(:product="p")
 
 </template>
@@ -9,12 +9,13 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { mapGetters } from 'vuex';
 import AppProduct from '@/components/Product.vue';
+import { Getters } from '@/store';
 
 @Component({
   components: {
     AppProduct,
   },
-  methods: mapGetters(['getProducts']),
+  computed: mapGetters([Getters.products]),
 })
 export default class AppProductList extends Vue {}
 </script>
