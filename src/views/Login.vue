@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-container
+  v-container(mt-5)
     app-login-form
 </template>
 

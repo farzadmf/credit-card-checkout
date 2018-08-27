@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-container()
+  v-container(mt-5)
     v-layout(row pa-2)
       h1 Product List
     app-product-list(v-if="isLoggedIn")

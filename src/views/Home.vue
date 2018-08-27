@@ -1,8 +1,8 @@
 <template lang="pug">
-  v-container(text-xs-center)
+  v-container(text-xs-center mt-5)
     v-flex(xs12 v-if="!isLoggedIn")
       h1 Credit Card Checkout App
-      h3 Click 'LOGIN' to Continue ...
+      h3 Click 'LOG IN' to Continue ...
     v-flex(xs12 v-else)
       h1 Welcome!
       h3 Go to 'Products' to Purchase ...
