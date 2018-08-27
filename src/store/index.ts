@@ -2,24 +2,12 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import { IState } from '@/store/types';
 import { mutations } from './mutations';
-import { Mutations, Getters } from './types';
-
-const descriptions = [
-  'Do dolore veniam qui ea labore enim dolore cupidatat aliqua deserunt pariatur sint velit.',
-  'Ut minim irure minim cupidatat ex.',
-  'Aliqua deserunt deserunt anim labore aliquip.',
-  'Qui id qui ad est in qui consequat fugiat sint esse.',
-  'Adipisicing proident ut irure in exercitation qui pariatur nulla anim adipisicing dolor aliqua.',
-  'Incididunt laborum nostrud nisi elit magna.',
-  'Minim quis eiusmod elit nulla adipisicing.',
-  'In pariatur amet sit proident labore aliqua elit proident veniam tempor dolor adipisicing.',
-  'Irure ullamco elit eu consectetur aute cillum elit ut eiusmod nulla magna reprehenderit.',
-  'Enim et officia minim incididunt.',
-];
+import * as types from './types';
 
 const initialState: IState = {
+  creditCards: types.creditCards,
   loggedIn: false,
-  products: descriptions.map((desc, i) => ({
+  products: types.descriptions.map((desc, i) => ({
     id: i + 1,
     description: desc,
     fileName: `p${i + 1}`,
@@ -32,15 +20,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   actions: {
-    [Mutations.LOG_IN]: context => context.commit(Mutations.LOG_IN),
-    [Mutations.LOG_OUT]: context => context.commit(Mutations.LOG_OUT),
-    [Mutations.ADD_TO_CART]: (context, payload) => context.commit(Mutations.ADD_TO_CART, payload),
-    [Mutations.REMOVE_FROM_CART]: (context, payload) => context.commit(Mutations.REMOVE_FROM_CART, payload),
+    [types.Mutations.LOG_IN]: context => context.commit(types.Mutations.LOG_IN),
+    [types.Mutations.LOG_OUT]: context => context.commit(types.Mutations.LOG_OUT),
+    [types.Mutations.ADD_TO_CART]: (context, payload) => context.commit(types.Mutations.ADD_TO_CART, payload),
+    [types.Mutations.REMOVE_FROM_CART]: (context, payload) => context.commit(types.Mutations.REMOVE_FROM_CART, payload),
   },
   getters: {
-    [Getters.products]: (state: IState) => state.products,
-    [Getters.selectedProducts]: (state: IState) => state.selectedProducts,
-    [Getters.isLoggedIn]: (state: IState) => state.loggedIn,
+    [types.Getters.products]: (state: IState) => state.products,
+    [types.Getters.selectedProducts]: (state: IState) => state.selectedProducts,
+    [types.Getters.isLoggedIn]: (state: IState) => state.loggedIn,
+    [types.Getters.creditCards]: (state: IState) => state.creditCards,
   },
   mutations,
   state: initialState,

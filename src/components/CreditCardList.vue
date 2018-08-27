@@ -1,18 +1,21 @@
 <template lang="pug">
   v-flex(xs12 text-xs-center)
     v-carousel(:cycle="false" dark hide-delimiters)
-      v-carousel-item
-        div Hello1
-      v-carousel-item
-        div Hello2
-      v-carousel-item
-        div Hello3
+      app-credit-card(v-for="(c, i) in creditCards" :key="i" :card="c")
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import AppCreditCard from '@/components/CreditCard.vue';
+import { mapGetters } from 'vuex';
+import { Getters } from '@/store';
 
-@Component
+@Component({
+  components: {
+    AppCreditCard,
+  },
+  computed: mapGetters([Getters.creditCards]),
+})
 export default class AppCreditCardList extends Vue {}
 </script>
 
