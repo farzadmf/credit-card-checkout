@@ -18,6 +18,8 @@ export const mutations = {
     }
   },
   [Mutations.ADD_CREDIT_CARD](state: IState, payload: ICreditCard) {
-    state.creditCards.push(payload);
+    if (!state.creditCards.find(c => c.number === payload.number)) {
+      state.creditCards.push(payload);
+    }
   },
 };
