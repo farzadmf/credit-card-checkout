@@ -5,7 +5,8 @@
 
     v-layout(v-if="isLoggedIn" row wrap)
       v-flex(xs12 mt-3)
-        p You have selected {{ selectedProducts.length }} products to purchase.
+        p(v-if="selectedProducts.length > 0") You have selected {{ selectedProducts.length }} products to purchase.
+        p(v-else) You have not selected any products. Click <b>PRODUCT</b> to see the list of products.
 
       v-layout(row wrap v-if="selectedProducts.length > 0")
         v-flex(xs12 mt-3)
