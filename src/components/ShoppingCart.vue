@@ -17,8 +17,8 @@
       v-flex(xs12 text-xs-center)
         v-btn(large color="primary" @click.stop="dialog = true") Add Credit Card
 
-      v-dialog(v-model="dialog" full-width)
-        app-credit-card-form(@close="handleClose")
+      v-dialog(v-model="dialog" max-width="400px" persistent)
+        app-credit-card-form(@cancel="closeDialog" @submit="handleSubmit")
 
     v-layout(v-else)
       v-flex(xs12)
@@ -42,8 +42,14 @@ import AppCreditCardList from '@/components/CreditCardList.vue';
 export default class AppShoppingCart extends Vue {
   private dialog = false;
 
-  private handleClose() {
+  private closeDialog() {
     this.dialog = false;
+  }
+
+  private handleSubmit({ value }: any) {
+    this.closeDialog();
+    // tslint:disable-next-line:no-console
+    console.warn('SUBMIT', value);
   }
 }
 </script>
