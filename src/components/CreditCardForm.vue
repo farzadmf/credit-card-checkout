@@ -51,6 +51,8 @@
 
               v-date-picker(
                 @input="menu = false"
+                :max="`${new Date().getFullYear() + 3}-12`"
+                :min="`${new Date().getFullYear()}-${new Date().getMonth() + 1}`"
                 no-title
                 scrollable
                 type="month"
@@ -73,6 +75,7 @@ export default class AppCreditCardForm extends Vue {
 
   private date = null;
   private formattedDate = '';
+  private isDateInFuture = false;
   private menu = false;
   private name = '';
   private number = '';
@@ -125,6 +128,11 @@ export default class AppCreditCardForm extends Vue {
 
   @Watch('date')
   private onDateChanged(value: string) {
+    this.isDateInFuture = new Date(value).valueOf() > new Date().valueOf();
+
+    // tslint:disable-next-line:no-console
+    console.warn('FUTURE?', this.isDateInFuture, 'VALUE', value);
+
     const [year, month] = value.split('-');
     this.formattedDate = `${month}/${year.substring(2, 4)}`;
   }
