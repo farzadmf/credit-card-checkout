@@ -6,7 +6,7 @@
     v-layout(v-if="isLoggedIn" row wrap)
       v-flex(xs12 mt-3)
         p(v-if="selectedProducts.length > 0") You have selected {{ selectedProducts.length }} products to purchase.
-        p(v-else) You have not selected any products. Click <b>PRODUCT</b> to see the list of products.
+        p(v-else) You have not selected any products. Click <b>PRODUCTS</b> to see the list of products.
 
       v-layout(row wrap v-if="selectedProducts.length > 0")
         v-flex(xs12 mt-3)
@@ -54,15 +54,8 @@ export default class AppShoppingCart extends Vue {
     this.dialog = false;
   }
 
-  private handleSubmit({ value }: any) {
+  private handleSubmit(card: ICreditCard) {
     this.closeDialog();
-
-    const card: ICreditCard = {
-      expiryDate: '08/20',
-      name: 'FARZAD',
-      number: '3333-3333-4444-5555',
-      type: 'Visa',
-    };
 
     this[Mutations.ADD_CREDIT_CARD](card);
   }
