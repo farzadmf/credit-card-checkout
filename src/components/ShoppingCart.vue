@@ -20,7 +20,7 @@
           app-credit-card-list
 
         v-flex(xs12 mt-5)
-          v-btn(block color="secondary" :disabled="selectedProducts.length === 0") Complete Purchase
+          v-btn(block color="secondary" @click="completePurchase") Complete Purchase
 
         v-dialog(v-model="dialog" max-width="400px" persistent)
           app-credit-card-form(@cancel="closeDialog" @submit="handleSubmit")
@@ -43,7 +43,7 @@ import AppCreditCardList from '@/components/CreditCardList.vue';
     AppCreditCardList,
   },
   computed: mapGetters([Getters.selectedProducts, Getters.isLoggedIn]),
-  methods: mapActions([Mutations.ADD_CREDIT_CARD]),
+  methods: mapActions([Mutations.ADD_CREDIT_CARD, Mutations.RESET_SELECTED_PRODUCTS]),
 })
 export default class AppShoppingCart extends Vue {
   [key: string]: any;
@@ -64,6 +64,11 @@ export default class AppShoppingCart extends Vue {
     };
 
     this[Mutations.ADD_CREDIT_CARD](card);
+  }
+
+  private completePurchase() {
+    this[Mutations.RESET_SELECTED_PRODUCTS]();
+    this.$router.push('/checkout');
   }
 }
 </script>

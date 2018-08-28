@@ -1,4 +1,5 @@
 import AppCart from './views/Cart.vue';
+import AppCheckout from './views/Checkout.vue';
 import AppHome from './views/Home.vue';
 import AppLogin from './views/Login.vue';
 import AppProducts from './views/Products.vue';
@@ -30,6 +31,11 @@ export default new Router({
       path: '/cart',
       name: 'cart',
       component: AppCart,
+    },
+    {
+      path: '/checkout',
+      name: 'checkout',
+      component: AppCheckout,
     },
   ],
 });

@@ -25,6 +25,7 @@ export const Mutations = {
   LOG_IN: 'LOG_IN',
   LOG_OUT: 'LOG_OUT',
   REMOVE_FROM_CART: 'REMOVE_FROM_CART',
+  RESET_SELECTED_PRODUCTS: 'RESET_SELECTED_PRODUCTS',
 };
 
 export const Getters = {

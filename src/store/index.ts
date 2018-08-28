@@ -25,6 +25,7 @@ export default new Vuex.Store({
     [types.Mutations.LOG_OUT]: context => context.commit(types.Mutations.LOG_OUT),
     [types.Mutations.REMOVE_FROM_CART]: (context, payload) => context.commit(types.Mutations.REMOVE_FROM_CART, payload),
     [types.Mutations.ADD_CREDIT_CARD]: (context, payload) => context.commit(types.Mutations.ADD_CREDIT_CARD, payload),
+    [types.Mutations.RESET_SELECTED_PRODUCTS]: context => context.commit(types.Mutations.RESET_SELECTED_PRODUCTS),
   },
   getters: {
     [types.Getters.products]: (state: IState) => state.products,
