@@ -3,23 +3,29 @@
     v-flex(sm12)
       h1 Checkout
 
-    v-flex(sm12 mt-3)
-    v-layout(v-if="isLoggedIn" row wrap)
-      v-flex(sm12)
+    v-layout(v-if="isLoggedIn" row wrap mt-4)
+      v-flex(sm12 text-xs-center)
         h3 Your purchase summary:
         v-divider
 
-      v-flex(sm12 mt-3)
-        p Products:
-          ul
-            li(v-for="(n, i) in purchasedProducts" :key="i") <b>{{ products[n].title }}</b>
+      v-flex(sm12 mt-4)
+        div Products:
+        v-data-table(
+          :headers="headers"
+          :items="purchasedProducts"
+          class="elevation-1"
+          hide-actions
+        )
+          template(slot="items" slot-scope="props")
+            td {{ props.item.title }}
+            td.text-xs-left {{ props.item.description }}
+            td.text-xs-left
+              img.product-image(:src="require(`@/assets/${props.item.fileName}.jpg`)")
 
-      v-flex(sm12)
+      v-flex(sm12 mt-5)
+        div Credit card:
         v-divider
-
-      v-flex(sm12 mt-3)
-        p Credit card:
-        v-layout(row wrap)
+        v-layout(row wrap mt-3)
           v-flex(xs3)
             p Number:
           v-flex(xs9)
@@ -44,7 +50,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { mapActions, mapGetters } from 'vuex';
-import { Getters, Mutations } from '@/store';
+import { Getters, Mutations, IProduct } from '@/store';
 
 @Component({
   computed: mapGetters([
@@ -59,7 +65,12 @@ import { Getters, Mutations } from '@/store';
 })
 export default class AppCheckoutComponent extends Vue {
   [key: string]: any;
-  private purchasedProducts!: number[];
+  private purchasedProducts!: IProduct[];
+  private headers = [
+    { text: 'Title', sortable: false },
+    { text: 'Description', sortable: false },
+    { text: 'Image', sortable: false },
+  ];
 
   private get purchaseSuccessful() {
     return this[Getters.currentCard] !== -1 && this[Getters.selectedProducts].length > 0;
@@ -71,7 +82,9 @@ export default class AppCheckoutComponent extends Vue {
   }
 
   private created() {
-    this.purchasedProducts = this[Getters.selectedProducts];
+    const selected = this[Getters.selectedProducts] as number[];
+    this.purchasedProducts = (this[Getters.products] as IProduct[])
+      .filter(p => selected.indexOf(p.id) !== -1);
   }
 
   private mounted() {
@@ -79,3 +92,10 @@ export default class AppCheckoutComponent extends Vue {
   }
 }
 </script>
+
+<style scoped lang="scss">
+.product-image {
+  width: 50px;
+  height: 50px;
+}
+</style>
