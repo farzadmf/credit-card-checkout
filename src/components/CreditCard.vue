@@ -51,10 +51,10 @@ $text-shadow-size: 2px;
 .card-number {
   @extend .card-details;
   font-family: 'PT Mono', 'Courier New', Courier, monospace;
-  font-size: 29px;
-  left: 50px;
-  letter-spacing: 4px;
-  top: 142px;
+  font-size: 20px;
+  left: 115px;
+  letter-spacing: 2px;
+  top: 55px;
   font-weight: bold;
 }
 
@@ -70,9 +70,9 @@ $text-shadow-size: 2px;
 
 .card-date {
   @extend .card-details;
-  top: 200px;
-  left: 285px;
-  font-size: 25px;
+  top: 100px;
+  left: 230px;
+  font-size: 20px;
   font-weight: bold;
 }
 
@@ -88,10 +88,10 @@ $text-shadow-size: 2px;
 
 .card-name {
   @extend .card-details;
-  font-size: 35px;
+  font-size: 25px;
   font-style: italic;
-  top: 240px;
-  left: 50px;
+  top: 150px;
+  left: 30px;
 }
 
 .card-name-black {
