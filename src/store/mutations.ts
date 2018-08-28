@@ -25,4 +25,7 @@ export const mutations = {
   [Mutations.RESET_SELECTED_PRODUCTS](state: IState) {
     state.selectedProducts = [];
   },
+  [Mutations.SET_CURRENT_CARD](state: IState, payload: number) {
+    state.currentCard = payload;
+  },
 };

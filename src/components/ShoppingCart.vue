@@ -5,7 +5,7 @@
 
     v-layout(v-if="isLoggedIn" row wrap)
       v-flex(xs12 mt-3)
-        p(v-if="selectedProducts.length > 0") You have selected {{ selectedProducts.length }} products to purchase.
+        p(v-if="selectedProducts.length > 0") You have selected <b>{{ selectedProducts.length }}</b> products to purchase.
         p(v-else) You have not selected any products. Click <b>PRODUCTS</b> to see the list of products.
 
       v-layout(row wrap v-if="selectedProducts.length > 0")
@@ -44,7 +44,7 @@ import AppCreditCardList from '@/components/CreditCardList.vue';
     AppCreditCardList,
   },
   computed: mapGetters([Getters.selectedProducts, Getters.isLoggedIn]),
-  methods: mapActions([Mutations.ADD_CREDIT_CARD, Mutations.RESET_SELECTED_PRODUCTS]),
+  methods: mapActions([Mutations.ADD_CREDIT_CARD]),
 })
 export default class AppShoppingCart extends Vue {
   [key: string]: any;
@@ -61,7 +61,6 @@ export default class AppShoppingCart extends Vue {
   }
 
   private completePurchase() {
-    this[Mutations.RESET_SELECTED_PRODUCTS]();
     this.$router.push('/checkout');
   }
 }

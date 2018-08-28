@@ -5,6 +5,7 @@ import { mutations } from './mutations';
 import * as types from './types';
 
 const initialState: IState = {
+  currentCard: -1,
   creditCards: types.creditCards,
   loggedIn: false,
   products: types.descriptions.map((desc, i) => ({
@@ -26,12 +27,14 @@ export default new Vuex.Store({
     [types.Mutations.REMOVE_FROM_CART]: (context, payload) => context.commit(types.Mutations.REMOVE_FROM_CART, payload),
     [types.Mutations.ADD_CREDIT_CARD]: (context, payload) => context.commit(types.Mutations.ADD_CREDIT_CARD, payload),
     [types.Mutations.RESET_SELECTED_PRODUCTS]: context => context.commit(types.Mutations.RESET_SELECTED_PRODUCTS),
+    [types.Mutations.SET_CURRENT_CARD]: (context, payload) => context.commit(types.Mutations.SET_CURRENT_CARD, payload),
   },
   getters: {
+    [types.Getters.creditCards]: (state: IState) => state.creditCards,
+    [types.Getters.currentCard]: (state: IState) => state.currentCard,
+    [types.Getters.isLoggedIn]: (state: IState) => state.loggedIn,
     [types.Getters.products]: (state: IState) => state.products,
     [types.Getters.selectedProducts]: (state: IState) => state.selectedProducts,
-    [types.Getters.isLoggedIn]: (state: IState) => state.loggedIn,
-    [types.Getters.creditCards]: (state: IState) => state.creditCards,
   },
   mutations,
   state: initialState,

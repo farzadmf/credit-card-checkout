@@ -14,6 +14,7 @@ export interface ICreditCard {
 
 export interface IState {
   creditCards: ICreditCard[];
+  currentCard: number;
   loggedIn: boolean;
   products: IProduct[];
   selectedProducts: number[];
@@ -26,9 +27,11 @@ export const Mutations = {
   LOG_OUT: 'LOG_OUT',
   REMOVE_FROM_CART: 'REMOVE_FROM_CART',
   RESET_SELECTED_PRODUCTS: 'RESET_SELECTED_PRODUCTS',
+  SET_CURRENT_CARD: 'SET_CURRENT_CARD',
 };
 
 export const Getters = {
+  currentCard: 'currentCard',
   creditCards: 'creditCards',
   isLoggedIn: 'isLoggedIn',
   products: 'products',
