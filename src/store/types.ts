@@ -20,17 +20,18 @@ export interface IState {
 }
 
 export const Mutations = {
+  ADD_CREDIT_CARD: 'ADD_CREDIT_CARD',
+  ADD_TO_CART: 'ADD_TO_CART',
   LOG_IN: 'LOG_IN',
   LOG_OUT: 'LOG_OUT',
-  ADD_TO_CART: 'ADD_TO_CART',
   REMOVE_FROM_CART: 'REMOVE_FROM_CART',
 };
 
 export const Getters = {
   creditCards: 'creditCards',
+  isLoggedIn: 'isLoggedIn',
   products: 'products',
   selectedProducts: 'selectedProducts',
-  isLoggedIn: 'isLoggedIn',
 };
 
 export const descriptions = [

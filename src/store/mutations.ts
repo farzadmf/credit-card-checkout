@@ -1,4 +1,4 @@
-import { IState, Mutations } from './types';
+import { IState, Mutations, ICreditCard } from './types';
 
 export const mutations = {
   [Mutations.LOG_IN](state: IState) {
@@ -16,5 +16,8 @@ export const mutations = {
     if (state.selectedProducts.indexOf(payload) !== -1) {
       state.selectedProducts = state.selectedProducts.filter(i => i !== payload);
     }
+  },
+  [Mutations.ADD_CREDIT_CARD](state: IState, payload: ICreditCard) {
+    state.creditCards.push(payload);
   },
 };

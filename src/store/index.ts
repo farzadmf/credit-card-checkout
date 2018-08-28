@@ -20,10 +20,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   actions: {
+    [types.Mutations.ADD_TO_CART]: (context, payload) => context.commit(types.Mutations.ADD_TO_CART, payload),
     [types.Mutations.LOG_IN]: context => context.commit(types.Mutations.LOG_IN),
     [types.Mutations.LOG_OUT]: context => context.commit(types.Mutations.LOG_OUT),
-    [types.Mutations.ADD_TO_CART]: (context, payload) => context.commit(types.Mutations.ADD_TO_CART, payload),
     [types.Mutations.REMOVE_FROM_CART]: (context, payload) => context.commit(types.Mutations.REMOVE_FROM_CART, payload),
+    [types.Mutations.ADD_CREDIT_CARD]: (context, payload) => context.commit(types.Mutations.ADD_CREDIT_CARD, payload),
   },
   getters: {
     [types.Getters.products]: (state: IState) => state.products,
