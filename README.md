@@ -1,31 +1,14 @@
 # credit-card-checkout
 
-## Project setup
-```
-yarn install
-```
+A simple application with basic implementations of the following features:
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+- Logging in
+- Adding products to the shopping cart
+- Use existing/add new credit card to purchase the items
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+## How to run the project
 
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Run your unit tests
-```
-yarn run test:unit
-```
-
-### Run your end-to-end tests
-```
-yarn run test:e2e
+```bash
+yarn install    (npm install)
+yarn serve      (npm run serve)
 ```
